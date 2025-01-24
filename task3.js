@@ -1,4 +1,3 @@
-// script.js
 const cells = document.querySelectorAll('[data-cell]');
 const gameStatus = document.querySelector('.game-status');
 const restartButton = document.getElementById('restart-btn');
@@ -62,12 +61,7 @@ function handleCellClick(event) {
   }
 }
 
-// Check for a win
-function checkWin() {
-  return winningCombinations.some(combination => {
-    return combination.every(index => gameState[index] === currentPlayer);
-  });
-}
+
 
 // Check for a draw
 function checkDraw() {
@@ -111,22 +105,33 @@ function toggleMode() {
 
 
 // AI makes a random move
+
 function aiMove() {
   setTimeout(() => {
-    let bestVal = -Infinity;
-    let bestMove = -1;
+    let bestMove;
 
-    for (let i = 0; i < gameState.length; i++) {
-      if (gameState[i] === '') {
-        gameState[i] = aiPlayer;
-        let moveVal = minimax(gameState, 0, false);
-        gameState[i] = '';
+    // Use Minimax only if scores are equal or at the start of the game
+    if (playerScore === aiScore || (playerScore === 0 && aiScore === 0)) {
+      let bestVal = -Infinity;
 
-        if (moveVal > bestVal) {
-          bestMove = i;
-          bestVal = moveVal;
+      for (let i = 0; i < gameState.length; i++) {
+        if (gameState[i] === '') {
+          gameState[i] = aiPlayer;
+          let moveVal = minimax(gameState, 0, false);
+          gameState[i] = '';
+
+          if (moveVal > bestVal) {
+            bestMove = i;
+            bestVal = moveVal;
+          }
         }
       }
+    } else {
+      // Make a random move if AI's score is greater than the player's score
+      const availableMoves = gameState
+        .map((cell, index) => (cell === '' ? index : null))
+        .filter(index => index !== null);
+      bestMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
     }
 
     gameState[bestMove] = aiPlayer;
@@ -144,6 +149,7 @@ function aiMove() {
     }
   }, 500); // Add a delay for better visual effect
 }
+
 
 // Minimax algorithm for AI
 function minimax(board, depth, isMaximizing) {
@@ -255,6 +261,6 @@ function checkWin() {
   if (winner) {
     updateScore(currentPlayer);
     return true;
-  }
+  } 
   return false;
 }
