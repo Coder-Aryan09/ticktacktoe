@@ -1,0 +1,112 @@
+/* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #05c8a4, #acb6e5);
+  background-attachment: fixed;
+}
+
+.container {
+  background: #fae2cb;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 90%;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-gap: 10px;
+  margin: 20px auto;
+  justify-content: center;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  background-color: #f0f4f8;
+  border: 2px solid #ddd;
+  border: 2px solid #bbb; /* Add a border around each cell */
+  border-radius: 5px; 
+  border-radius: 10px; /* Rounded corners */
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.cell:hover {
+  background-color: #e6f7ff;
+  transform: scale(1.1);
+}
+
+.cell.taken {
+  pointer-events: none; /* Disable clicking on taken cells */
+  background-color: #d9d9d9; /* Gray out taken cells */
+}
+
+.game-status {
+  font-size: 1.5rem;
+  color: #555;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.scoreboard {
+  margin: 20px 0;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  color: #333;
+}
+
+.scoreboard span {
+  flex: 1;
+  text-align: center;
+  
+}
+
+.scoreboard span:not(:last-child) {
+  margin-right: 10px;
+}
+

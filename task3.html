@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="task3.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Tic-Tac-Toe</h1>
+    <div class="game-board">
+      <!-- 9 cells for the Tic-Tac-Toe grid -->
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+      <div class="cell" data-cell></div>
+    </div>
+    <h2 class="game-status"></h2>
+    <div class="scoreboard">
+        <span id="player-score">Player (X): 0</span>
+        <span id="ai-score">AI (O): 0</span>
+      </div>
+      
+    <button id="mode-toggle">Switch to AI Mode</button>
+
+    <button id="restart-btn">Restart</button>
+
+  </div>
+  <script src="task3.js"></script>
+</body>
+</html>
