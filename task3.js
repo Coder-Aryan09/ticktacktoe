@@ -111,7 +111,7 @@ function aiMove() {
     let bestMove;
 
     // Use Minimax only if scores are equal or at the start of the game
-    if (playerScore === aiScore || (playerScore === 0 && aiScore === 0)) {
+    if (playerScore >= aiScore || (playerScore === 0 && aiScore === 0) ) {
       let bestVal = -Infinity;
 
       for (let i = 0; i < gameState.length; i++) {
